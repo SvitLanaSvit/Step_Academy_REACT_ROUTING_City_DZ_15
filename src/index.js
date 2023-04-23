@@ -1,13 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import Home from './components/Home';
+import CityInfo from './components/CityInfo';
+import FamousAttraction from './components/FamousAttraction';
+import OtherAttractions from './components/OtherAttractions';
+import CityPhoto from './components/CityPhoto';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home></Home>,
+    children: [
+      {
+        path: "/city-info",
+        element: <CityInfo></CityInfo>
+      },
+      {
+        path: "/famous-attraction",
+        element: <FamousAttraction></FamousAttraction>
+      },
+      {
+        path: "/other-attractions",
+        element: <OtherAttractions></OtherAttractions>
+      },
+      {
+        path: "/city-photo",
+        element: <CityPhoto></CityPhoto>
+      }
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 );
 
